@@ -1,0 +1,106 @@
+import React from 'react';
+import { Shield, Sparkles, Droplet, Wrench, Bike } from 'lucide-react';
+import { motion } from 'motion/react';
+
+const SERVICES = [
+  {
+    id: 'ppf',
+    icon: Shield,
+    title: 'Paint Protection Film (PPF)',
+    description: 'Protect your car\'s paint from scratches, stone chips, and damage with high-quality PPF for long-lasting shine.',
+    features: ['10-Year Warranty', 'Self-Healing Technology', 'Edge-Wrapped Precision'],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_%D0%B0%D0%BD%D1%82%D0%B8%D0%B3%D1%80%D0%B0%D0%B2%D0%B8%D0%B9%D0%BD%D0%BE%D0%B9_%D0%BF%D0%BB%D0%B5%D0%BD%D0%BA%D0%B8_%D0%BD%D0%B0_%D0%BA%D0%B0%D0%BF%D0%BE%D1%82.jpg'
+  },
+  {
+    id: 'ceramic',
+    icon: Droplet,
+    title: 'Ceramic Coating',
+    description: 'Get a glossy, hydrophobic layer that protects your vehicle from dirt, UV rays, and water spots.',
+    features: ['9H & 10H Hardness', 'Chemical Resistance', 'Candy-like Gloss'],
+    image: 'https://images.pexels.com/photos/25189126/pexels-photo-25189126.jpeg'
+  },
+  {
+    id: 'interior',
+    icon: Sparkles,
+    title: 'Interior & Exterior Detailing',
+    description: 'Deep cleaning of interiors and exteriors to remove dirt, stains, and restore freshness.',
+    features: ['Deep Interior Rejuvenation', 'Upholstery Cleaning', 'Engine Bay Detailing'],
+    image: 'https://images.pexels.com/photos/6872175/pexels-photo-6872175.jpeg?auto=compress&cs=tinysrgb&w=2670&q=80'
+  },
+  {
+    id: 'correction',
+    icon: Wrench,
+    title: 'Paint Correction & Scratch Removal',
+    description: 'Eliminate swirl marks, scratches, and dullness to restore original paint clarity.',
+    features: ['Multi-Stage Machine Polishing', 'Swirl Mark Removal', 'Showroom Restorations'],
+    image: 'https://images.unsplash.com/photo-1620584898989-d39f7f9ed1b7?w=1200&auto=format&fit=crop&q=60'
+  },
+  {
+    id: 'bike',
+    icon: Bike,
+    title: 'Bike Detailing',
+    description: 'Specialized care for bikes to keep them clean, polished, and protected.',
+    features: ['Engine Bay Detailing', 'Chain Clean & Lube', 'Plastics Restoration'],
+    image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=2670&auto=format&fit=crop'
+  }
+];
+
+export function Services() {
+  return (
+    <section id="services" className="py-32 bg-zinc-950 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="text-center mb-20 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight mb-6">Our Premium Services</h2>
+          <p className="text-zinc-400 text-lg">
+            We offer complete A-to-Z detailing solutions designed to restore, protect, and enhance your vehicle.
+          </p>
+        </div>
+
+        <div className="space-y-12 md:space-y-24">
+          {SERVICES.map((service, index) => (
+            <motion.div 
+              key={service.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className={`flex flex-col md:flex-row gap-8 lg:gap-16 items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+            >
+              {/* Image Side */}
+              <div className="w-full md:w-1/2 relative group rounded-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-[400px]">
+                <div className="absolute inset-0 bg-zinc-900 animate-pulse" />
+                <img 
+                  src={service.image} 
+                  alt={service.title} 
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 relative z-10"
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80 z-20 pointer-events-none" />
+              </div>
+
+              {/* Content Side */}
+              <div className="w-full md:w-1/2 space-y-6">
+                <div className="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center border border-gold-500/30">
+                  <service.icon className="text-gold-500" size={28} />
+                </div>
+                <h3 className="text-2xl md:text-4xl font-bold">{service.title}</h3>
+                <p className="text-zinc-400 text-lg leading-relaxed max-w-lg">
+                  {service.description}
+                </p>
+                <ul className="space-y-4 pt-4 border-t border-white/10 max-w-lg">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-3 text-zinc-300 font-medium tracking-wide">
+                      <div className="w-1.5 h-1.5 rounded-full bg-gold-500" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

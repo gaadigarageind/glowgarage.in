@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlowGarage | Premium Car Detailing | PPF & Ceramic Coating Delhi</title>
+    <meta name="description" content="Premium car detailing in Delhi. Expert PPF installation near me, ceramic coating Delhi, and premium car spa services. Trained professionals with warranty." />
+    <meta name="keywords" content="car detailing in Delhi, PPF installation near me, ceramic coating Delhi, premium car spa, car polish, paint protection film" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
